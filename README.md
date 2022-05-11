@@ -13,7 +13,7 @@ This plugin is an adaptation of [logseq-psummarise-plugin](https://github.com/hk
 
 **Main differences** of this plugin from logseq-psummarise-plugin:
 - focused on copy highlights (==), not 'bold' (\*\*)
-- agnostic workflow: you can use with any workflow, e.g. [Progressive Summarization](https://fortelabs.co/blog/progressive-summarization-a-practical-technique-for-designing-discoverable-notes/), [HQ&A](https://www.jamoe.org/note-taking), [Zettelkasten](https://learntrepreneurs.com/books-reading-better-learning-more/zettelkastens-3-note-taking-levels-help-you-harvest-your-thoughts/), etc.
+- agnostic workflow: you can use with any workflow, instead of focusing on [Progressive Summarization](https://fortelabs.co/blog/progressive-summarization-a-practical-technique-for-designing-discoverable-notes/).
 - allow to copy highlights to clipboard instead of create a block with highlights
 - allow config the title of the block will get the highlights
 - has a config to set to open or not on sidebar
