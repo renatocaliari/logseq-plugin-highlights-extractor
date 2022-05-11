@@ -12,6 +12,13 @@ const settingsTemplate = [{
   default: "true",
   title: "Open sidebar",
   description: "Open sidebar with the extracted highlights",
+},
+{
+  key: "linkClipboard",
+  type: 'boolean',
+  default: "true",
+  title: "Open sidebar",
+  description: "Put a link on the extracted highlights to the original block when copying to clipboard",
 }
 ]
 logseq.useSettingsSchema(settingsTemplate)
@@ -74,6 +81,8 @@ export const createSectionHighlights = async (e, insertBlockWithHighlights = tru
     return;
   }
 
+  let linkClipboard = (logseq.settings.linkClipboard == "false") != Boolean(logseq.settings.linkClipboard);
+
   const arrHighlightsBlocks = [];
   const arrHighlightsClipboard = [];
   for (let h of arrHighlights) {
@@ -82,20 +91,27 @@ export const createSectionHighlights = async (e, insertBlockWithHighlights = tru
     } else if (h.contentHighlighted.length === 1) {
       let matchGroup = findHighlights(h.contentHighlighted[0], false);
       let onlyTextGroup = matchGroup[1] || matchGroup[2];
+      let content = onlyTextGroup;
+      let contentWithLink = `[${onlyTextGroup}](${h.id})`;
       const payload = {
-        content: `[${onlyTextGroup}](${h.id})`,
+        content: contentWithLink,
       };
       arrHighlightsBlocks.push(payload);
-      arrHighlightsClipboard.push(onlyTextGroup);
+      arrHighlightsClipboard.push(linkClipboard ? contentWithLink : content);
     } else {
       for (const [idx, group] of h.contentHighlighted.entries()) {
         let matchGroup = findHighlights(group, false);
         let onlyTextGroup = matchGroup[1] || matchGroup[2];
+        let content = onlyTextGroup;
+        let contentWithLink = `[${onlyTextGroup}](${h.id})`;
+
+        console.log('onlyTextGroup:', onlyTextGroup);
         const payload = {
-          content: `[${onlyTextGroup}](${h.id})`,
+          content: contentWithLink,
         };
+        console.log('contentWithLin:', contentWithLink);
         arrHighlightsBlocks.push(payload);
-        arrHighlightsClipboard.push(onlyTextGroup);
+        arrHighlightsClipboard.push(linkClipboard ? contentWithLink : content);
 
       }
     }
@@ -104,7 +120,7 @@ export const createSectionHighlights = async (e, insertBlockWithHighlights = tru
   if (insertBlockWithHighlights) {
     const blockHeaderHighlight = await logseq.Editor.insertBlock(
       block.uuid,
-      `${logseq.settings.headerHighlights}`,
+      `${logseq.settings.headerHighlights} `,
       {
         before:
           block.content.includes(":: ") &&
@@ -136,8 +152,9 @@ export const createSectionHighlights = async (e, insertBlockWithHighlights = tru
     for (const [idx, hBlock] of arrHighlightsClipboard.entries()) {
       if (idx > 0) {
         textToClipboard = textToClipboard.concat("\n- " + hBlock);
+      } else {
+        textToClipboard = textToClipboard.concat("- " + hBlock);
       }
-      textToClipboard = textToClipboard.concat("- " + hBlock);
     }
     copyToClipboard(textToClipboard);
   }
