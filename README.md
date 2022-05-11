@@ -32,4 +32,4 @@ In any block, you can:
 ![Settings](./settings.png)
 
 # Icon
-Credits to <a href="https://www.flaticon.com/free-icons/highlighter" title="highlighter icons">Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/free-icons/highlighter" title="highlighter icons">Highlighter icons created by Freepik - Flaticon</a>
