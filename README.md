@@ -21,3 +21,8 @@ This plugin is an adaptation of [logseq-psummarise-plugin](https://github.com/hk
 - show the highlighted text linked to block instead of show the text extracted of highlight and an asterik (\*) or other symbol with link on the side of the text.
 
 # How to use
+In any block, you can:
+- Use the slash-command "/Highlights: Extract in a new block" or "/Highlights: Copy to clipboard"
+- Click with the right button of mouse and select "Highlights: Extract in a new block" or "Highlights: Copy to clipboard".
+
+# Setting
