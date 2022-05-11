@@ -1,6 +1,6 @@
 {
   "name": "logseq-plugin-highlights-extractor",
-  "version": "1.0",
+  "version": "0.0.1",
   "description": "Extract highglights from blocks",
   "main": "dist/index.html",
   "targets": {
@@ -10,11 +10,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "parcel build --no-source-maps index.html --public-url ./"
   },
-  "keywords": [],
+  "keywords": [
+    "highlights"
+  ],
   "author": "cali (renato caliari)",
   "license": "MIT",
   "dependencies": {
-    "@logseq/libs": "0.0.1-alpha.34"
+    "@logseq/libs": "0.0.6"
   },
   "logseq": {
     "id": "logseq-plugin-highlights-extractor",
@@ -22,6 +24,6 @@
     "icon": "./icon.png"
   },
   "devDependencies": {
-    "parcel": "^2.0.0"
+    "parcel": "^2.0.0-beta.2"
   }
 }
