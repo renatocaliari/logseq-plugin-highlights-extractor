@@ -25,4 +25,5 @@ In any block, you can:
 - Use the slash-command "/Highlights: Extract in a new block" or "/Highlights: Copy to clipboard"
 - Click with the right button of mouse and select "Highlights: Extract in a new block" or "Highlights: Copy to clipboard".
 
-# Setting
+# Settings
+![Settings](./settings.png)
